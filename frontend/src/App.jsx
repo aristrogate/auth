@@ -1,6 +1,10 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './App.css'
+
+axios.defaults.baseURL = 'http://localhost:5000'
+axios.defaults.withCredentials = true
 
 function App() {
   const [mode, setMode] = useState('signup')
@@ -34,8 +38,8 @@ function App() {
   return (
     <div className='authBox'>
       <div className="authCard">
-        <button className = 'button' onClick={() => setMode('signup')}>Sign Up</button>
-        <button className = 'button' onClick={() => setMode('login')}>Log In</button>
+        <button className='button' onClick={() => setMode('signup')}>Sign Up</button>
+        <button className='button' onClick={() => setMode('login')}>Log In</button>
         <form onSubmit={handleSubmit}>
           <input
             className='inputBox'
