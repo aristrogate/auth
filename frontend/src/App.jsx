@@ -3,6 +3,7 @@ import './App.css'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Home from './pages/home'
+import 'react-toastify/ReactToastify.css'
 
 function App() {
     return (

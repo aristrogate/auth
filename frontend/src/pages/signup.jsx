@@ -1,9 +1,48 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import {ToastContainer} from 'react-toastify';
 
-function signup() {
+function Signup() {
     return (
-        <div>signup</div>
+        <div className='container'>
+            <h1>SignUp</h1>
+            <form>
+                <div>
+                    <label htmlFor = 'name'>Username</label>
+                    <input
+                        type='text'
+                        name='name'
+                        autoFocus
+                        placeholder="Enter your username..."
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor = 'email'>Email</label>
+                    <input
+                        type='email'
+                        name='email'
+                        placeholder="Enter your email..."
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor = 'password'>Password</label>
+                    <input
+                        type='password'
+                        name='password'
+                        placeholder="Enter your password..."
+                    />
+                </div>
+                <button>Sign Up</button>
+
+                <span>Already have an account?
+                    <Link to="/login">Login</Link>
+                </span>
+            </form>
+            <ToastContainer />
+        </div>
     )
 }
 
-export default signup
+export default Signup
