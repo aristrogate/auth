@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const AuthRouter = require('./Routes/AuthRouter');
 require('dotenv').config();
-require('./db');
+const connectDB = require('./db');
+connectDB();
 
 const PORT = process.env.PORT || 5000;
 
