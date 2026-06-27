@@ -1,14 +1,21 @@
-require('dotenv').config();
-
 const express = require('express');
-const cookieParser = require('cookie-parser');
-const connectDB = require('./db'); 
-
 const app = express();
-connectDB();  
-
-app.use(express.json()); 
-app.use(cookieParser());
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const AuthRouter = require('./Routes/AuthRouter');
+require('dotenv').config();
+require('./db');
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.get('/ping',(req,res)=>{
+    res.send('PONG');
+})
+
+app.use(bodyParser.json());
+app.use(cors())
+app.use('/auth',AuthRouter);
+
+app.listen(PORT,()=>{
+    console.log(`Server is running on ${PORT}`)
+})
