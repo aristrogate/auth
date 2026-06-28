@@ -19,12 +19,28 @@ function Signup() {
         setSignupInfo(copySignupInfo);
     }
 
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
-        const { name, email, password } = SignupInfo;
+        const { username, email, password } = SignupInfo;
 
-        if (!name || !email || !password) {
+        if (!username || !email || !password) {
             return handleError('Please fill out all of the fields!')
+        }
+
+        try {
+            const url = "http://localhost:5000/auth/signup"
+            const response = await fetch(url,{
+                method:"POST",
+                headers:{
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify(SignupInfo)
+            });
+
+            const result = await response.json();
+            console.log(result)
+        } catch (err) {
+            handleError(err);
         }
     }
 
@@ -37,10 +53,10 @@ function Signup() {
                     <input
                         onChange={handleChange}
                         type='text'
-                        name='name'
+                        name='username'
                         autoFocus
                         placeholder="Enter your username..."
-                        value={SignupInfo.name}
+                        value={SignupInfo.username}
                     />
                 </div>
 
