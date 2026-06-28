@@ -21,9 +21,9 @@ function Signup() {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const { username, email, password } = SignupInfo;
+        const { name, email, password } = SignupInfo;
 
-        if (!username || !email || !password) {
+        if (!name || !email || !password) {
             return handleError('Please fill out all of the fields!')
         }
 
@@ -53,10 +53,10 @@ function Signup() {
                     <input
                         onChange={handleChange}
                         type='text'
-                        name='username'
+                        name='name'
                         autoFocus
                         placeholder="Enter your username..."
-                        value={SignupInfo.username}
+                        value={SignupInfo.name}
                     />
                 </div>
 
